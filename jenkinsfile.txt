@@ -1,27 +1,40 @@
 pipeline {
+    
     agent any
-
+    
     stages {
+        
+        
         stage('Build') {
             steps {
-                echo 'Building...'
-                
+                echo "Build is completed"
             }
-            post {
+
+                post {
        
         success {
             mail to: "ella.zarandi@gmail.com" ,
             subject: "build status",
-            body : "buld was successfull!"
-            
-        }
-        failure {
-            echo 'execution failed.'
-            
-        }
-    }
-        }
-    }
+            body : "buld was successfull!"}
 
-    
+            
+        failure {
+            echo 'execution failed.'}
+    }
+        }
+        
+
+        stage('Test') {
+            steps {
+                echo "Test is completed"
+            }
+        }
+        
+
+        stage('Deploy') {
+            steps {
+                echo "Deploy is completed"
+            }
+        }
+    }
 }
